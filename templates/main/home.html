@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}{{ profile.name }} - {{ profile.title }}{% endblock %}
+
+{% block content %}
+<div class="row align-items-center hero-section">
+    <div class="col-md-5">
+        <div class="profile-image-container">
+            {% if profile.profile_image %}
+            <img src="{{ profile.profile_image.url }}" alt="{{ profile.name }}" class="img-fluid rounded">
+            {% else %}
+            <div class="placeholder-image bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 300px;">
+                <i class="fas fa-user fa-5x"></i>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-7">
+        <h1 class="display-4 fw-bold">{% if profile %}{{ profile.title }}{% else %}Software Developer{% endif %}</h1>
+        <p class="lead">{% if profile %}{{ profile.bio|linebreaks }}{% else %}Welcome to my portfolio website. Please add your profile information in the admin panel.{% endif %}</p>
+        <a href="{% url 'contact' %}" class="btn btn-primary btn-lg mt-3">Contact Me</a>
+    </div>
+</div>
+{% endblock %}

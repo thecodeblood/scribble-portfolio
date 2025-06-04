@@ -1,0 +1,257 @@
+/* Rubik Font */
+:root {
+    --primary-color: #007bff;
+    --dark-bg: #1a1e23;
+    --dark-text: #ffffff;
+    --dark-secondary: #2c3038;
+    --light-bg: #ffffff;
+    --light-text: #212529;
+    --light-secondary: #f8f9fa;
+    --transition: all 0.3s ease;
+    --font-family: "Rubik", sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    transition: var(--transition);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+/* Header styles */
+header {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .navbar {
+    background-color: var(--dark-bg);
+}
+
+.dark-theme .navbar-brand,
+.dark-theme .nav-link {
+    color: var(--dark-text);
+}
+
+.light-theme .navbar {
+    background-color: var(--light-bg);
+}
+
+.light-theme .navbar-brand,
+.light-theme .nav-link {
+    color: var(--light-text);
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: bold;
+}
+
+/* Main content */
+main {
+    flex: 1;
+}
+
+.hero-section {
+    padding: 2rem 0;
+}
+
+.profile-image-container {
+    background-color: #f0d4b4;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 1rem;
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme footer {
+    background-color: var(--dark-bg);
+}
+
+.light-theme footer {
+    background-color: var(--light-bg);
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+    }
+    
+    .profile-image-container {
+        margin-bottom: 2rem;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #1e88e5;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 60px;
+}
+
+.timeline-dot {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 10px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme adjustments */
+body.dark-theme .timeline-content {
+    background-color: #1a1a2e;
+    color: #e1e1e1;
+}
+
+
+/* Project card styling */
+.card {
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
+/* Blog styling */
+.blog-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-content h2, .blog-content h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.featured-image img {
+    max-height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Dark theme adjustments for blog */
+body.dark-theme .card {
+    background-color: #1a1a2e !important;
+    border-color: #16213e !important;
+}
+
+body.dark-theme .form-control {
+    background-color: #16213e !important;
+    border-color: #1e2a4a !important;
+    color: #e1e1e1 !important;
+}
+
+body.dark-theme .page-link {
+    background-color: #16213e;
+    border-color: #1e2a4a;
+    color: #e1e1e1;
+}
+
+body.dark-theme .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+body.dark-theme .card-footer {
+    background-color: #16213e !important;
+}
+
+
+/* Font weight utility classes */
+.font-light {
+    font-weight: 300;
+}
+
+.font-regular {
+    font-weight: 400;
+}
+
+.font-medium {
+    font-weight: 500;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+.font-bold {
+    font-weight: 700;
+}
+
+.font-extrabold {
+    font-weight: 800;
+}
+
+.font-black {
+    font-weight: 900;
+}
