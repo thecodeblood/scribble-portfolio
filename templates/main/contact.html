@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% block title %}Contact - {{ profile.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">Get in Touch</h1>
+    <p class="mb-4">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out, and I'll get back to you as soon as possible.</p>
+    
+    <div class="row">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+            <form method="post" action="{% url 'contact' %}">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter the subject" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary px-4 py-2">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Contact Information</h3>
+                    
+                    <div class="mb-3">
+                        <p class="mb-1"><strong>Email:</strong></p>
+                        <p>{{ profile.email|default:"contact@techfolio.com" }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="mb-1"><strong>Phone:</strong></p>
+                        <p>{{ profile.phone|default:"+1 (123) 456-7890" }}</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <h4 class="mb-3">Connect With Me</h4>
+                        <div class="d-flex">
+                            {% for social in profile.social_links.all %}
+                                {% if social.platform == 'linkedin' %}
+                                    <a href="{{ social.url }}" target="_blank" class="me-3 social-icon">
+                                        <i class="fab fa-linkedin fa-lg"></i>
+                                    </a>
+                                {% elif social.platform == 'github' %}
+                                    <a href="{{ social.url }}" target="_blank" class="me-3 social-icon">
+                                        <i class="fab fa-github fa-lg"></i>
+                                    </a>
+                                {% elif social.platform == 'twitter' %}
+                                    <a href="{{ social.url }}" target="_blank" class="me-3 social-icon">
+                                        <i class="fab fa-twitter fa-lg"></i>
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

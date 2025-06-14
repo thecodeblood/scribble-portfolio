@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Profile, Experience, Technology, Certification, Project, BlogPost, BlogCategory
+from .models import Profile, Experience, Technology, Certification, Project, BlogPost, BlogCategory, Book
 from django.core.paginator import Paginator
 
 def home(request):
@@ -55,6 +55,23 @@ def projects(request):
 
 def contact(request):
     profile = Profile.objects.first()
+    
+    if request.method == 'POST':
+        # Here you would process the form data
+        # For example, send an email or save to database
+        # This is a placeholder for form processing logic
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        # Add your email sending logic here
+        # For now, we'll just return the same page with a success message
+        return render(request, 'main/contact.html', {
+            'profile': profile,
+            'success_message': 'Thank you for your message! I will get back to you soon.'
+        })
+    
     return render(request, 'main/contact.html', {'profile': profile})
 
 def blog_list(request):

@@ -96,6 +96,7 @@ class Book(models.Model):
     description = models.TextField()
     publication_date = models.DateField()
     purchase_link = models.URLField(blank=True, null=True)
+    will_read = models.BooleanField(default=False)  # Add this field
     
     def __str__(self):
         return self.title
